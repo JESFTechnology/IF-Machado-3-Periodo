@@ -1,1 +1,302 @@
+<!DOCTYPE HTML>
+<!--
+	ZeroFour by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
+<head>
+  <title>Fila em JavaScript - JESFTECH</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">-->
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />-->
+  <!--<link rel="stylesheet" href="style.css" />-->
+</head>
+
+<body class="no-sidebar is-preload">
+  <div id="page-wrapper">
+
+    <!-- Header Wrapper -->
+    <div id="header-wrapper">
+      <div class="container">
+
+        <!-- Header -->
+        <header id="header">
+          <div class="inner">
+
+            <!-- Logo -->
+            <h1><a href="../index.html" id="logo">JESF TECHNOLOGY</a></h1>
+
+            <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li>
+                  <a href="#">Serviços</a>
+                  <ul>
+                    <li>
+                      <a href="#">JESF Maker</a>
+                      <ul>
+                        <li><a href="../services/jesf-maker-impressao3d.html">Impressão 3D</a></li>
+                        <li><a href="#">Corte á laser (EM BREVE)</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#">JESF House</a>
+                      <ul>
+                        <li><a href="../services/jesf-house-automacao.html">Automação
+                            Residencial</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#">JESF Team</a>
+                      <ul>
+                        <li><a href="services/jesf-team-translife-executivo.html">Translife
+                            Executivo</a></li>
+                        <li><a href="services/jesf-team-momentos-2-rodas.html">Momentos 2
+                            Rodas</a></li>
+                        <li><a href="services/jesf-team-clinica-terapia-criativa.html">Clinica
+                            de Terapia Criativa</a></li>
+                      </ul>
+                    </li>
+                    <!--<li>
+											<a href="#">JESF Transport</a>
+											<ul>
+												<li><a href="#">Show e Eventos</a></li>
+												<li><a href="#">Escolar</a></li>
+												<li><a href="#"></a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">JESF Health</a>
+											<ul>
+												<li><a href="#">Terapia e Psicólogos</a></li>
+												<li><a href="#">Talas para membros</a></li>
+												<li><a href="#"></a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">JESF Robots</a>
+											<ul>
+												<li><a href="#">John</a></li>
+												<li><a href="#">Bob</a></li>
+												<li><a href="#">Otto (Clássico)</a></li>
+												<li><a href="#"></a></li>
+											</ul>
+										</li>-->
+
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Auxiliar</a>
+                  <ul>
+                    <li><a href="../repotodoc.html">RepoToDoc</a></li>
+                    <li><a href="../trabalho/index.html">Trabalho Faculdade</a></li>
+                  </ul>
+                </li>
+                <li><a href="../portifolio.html">Meu portifólio</a></li>
+                <li class=""><a href="../login.html" id="login">Login</a></li>
+                <script>
+                  if (sessionStorage.getItem("userName")) {
+                    const userName = sessionStorage.getItem("userName");
+                    var txt = "";
+                    for (let i = 0; i < userName.length; i++) {
+                      txt += userName[i]
+                      if (userName[i] == " ") {
+                        break;
+                      }
+                    }
+                    document.getElementById("login").textContent = txt;
+                  }
+                </script>
+              </ul>
+            </nav>
+
+          </div>
+        </header>
+
+      </div>
+    </div>
+
+    <!-- Main Wrapper -->
+    <div id="main-wrapper" id="login-main">
+      <div class="wrapper style2">
+        <div class="inner">
+          <div class="container">
+            <div class="content">
+              <article>
+                <div class="jumbotron bg-success text-light text-center py-3">
+                  <h2 class="display-4"><i class="fas fa-headset"></i> Sistema de Controle de Atendimento</h2>
+                </div>
+                <div id="mensagem-remocao" class="alert alert-success mt-3" style="display: block;"></div>
+                <h2>Fila</h2>
+                <p>Adicione pessoas na fila:</p>
+                <div class="">
+                  <label for="novoNome">Nome:</label>
+                  <br>
+                  <input type="text" class="" id="txtnovoNome" name="name" placeholder="Digite o nome da pessoa">
+                  <br>
+                  <label for="novoCPF">CPF:</label>
+                  <br>
+                  <input type="text" class="" id="txtnovoCPF" name="cpf" placeholder="Digite o CPF da pessoa">
+                  <br>
+                  <label for="novoNascimento">Data de Nascimento:</label>
+                  <br>
+                  <input type="text" class="form-control" id="txtnovoData" placeholder="Digite a Data de Nacimento" />
+                  <br>
+                  <br>
+                  <button class="" onclick="addElemento()">Adicionar à fila</button>
+                  <button class="" onclick="atenderFila()">Atender</button>
+                  <button class="" onclick="buscarPorCPF()">Buscar</button>
+                  <br>
+                  <br>
+                  <label for="cpfbusc">Buscar CPF:</label>
+                  <input type="text" class="" id="txtBuscarCPF" placeholder="Digite o CPF para buscar"
+                    onchange="buscarPorCPF2()">
+                  <br>
+                  <br>
+                </div>
+                <h2 id="lblPessoasFila">Dados da Fila</h2>
+                <ul id="listFila"></ul>
+                </ul>
+                <br>
+                <h2 id="lblPessoasFilaPreferencial">Dados da Fila Preferencial</h2>
+                <ul id="listFilaPreferencial"></ul>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Wrapper -->
+    <div id="footer-wrapper">
+      <footer id="footer" class="container">
+        <div class="row">
+          <div class="col-3 col-6-medium col-12-small">
+
+            <!-- Links -->
+            <section>
+              <h2>Produtos</h2>
+              <ul class="divided">
+                <li><a>Funko pop customizado (Entrar em contato)</a></li>
+              </ul>
+            </section>
+
+          </div>
+          <div class="col-3 col-6-medium col-12-small">
+
+            <!-- Links -->
+            <section>
+              <h2>Serviços</h2>
+              <ul class="divided">
+                <li><a href="#">Maker</a></li>
+                <li><a href="#">House</a></li>
+                <li><a href="#">(EM BREVE)</a></li>
+                <li><a href="#">(EM BREVE)</a></li>
+              </ul>
+            </section>
+
+            <!-- Links -->
+            <section>
+              <h2>PARCEIROS</h2>
+              <ul class="divided">
+                <li><a href="https://www.youtube.com/@MotoCasalMomentos2Rodas">Momentos 2 Rodas</a></li>
+                <li><a href="https://www.instagram.com/clinicaterapiacriativa/">Clinica de Terapia
+                    Criativa</a></li>
+                <!--<li><a href="">Katherine Papel e Tecido</a></li>
+								<li><a href="">Translife Executivo</a></li>-->
+              </ul>
+            </section>
+
+          </div>
+          <div class="col-6 col-12-medium imp-medium">
+
+            <!-- About -->
+            <section>
+              <h2><strong>JESF TECH</strong> Cuidando de você</h2>
+              <p>Olá! Isto é <strong>JESF TECHNOLOGY</strong>, uma empresa focada em seu bem-estar
+                onde usamos impressoras 3D para garantir conforto para você!
+                <br>
+                Já pensou até onde uma impressora 3D pode ir? Muito longe! Então usaremos disso para
+                criar produtos que você pode usar todos os dias.
+              </p>
+              <!--<a href="" class="button alt icon solid fa-arrow-circle-right">Learn More</a>-->
+            </section>
+
+            <!-- Contact -->
+            <section>
+              <h2>CONTATO</h2>
+              <div>
+                <div class="row">
+                  <div class="col-6 col-12-small">
+                    <dl class="contact">
+                      <dt>Instagram</dt>
+                      <dd><a href="https://www.instagram.com/jesf.3dprint.tech/">@jesf.3dprint.tech</a>
+                      </dd>
+                      <dt>Facebook</dt>
+                      <dd><a href="#">Ainda não temos página</a></dd>
+                      <dt>WWW</dt>
+                      <dd><a href="https://jesftechnology.web.app">jesftechnology.web.app</a></dd>
+                      <dt>Email</dt>
+                      <dd><a href="#">jesftech@gmail.com</a></dd>
+                    </dl>
+                  </div>
+                  <div class="col-6 col-12-small">
+                    <dl class="contact">
+                      <dt>Address</dt>
+                      <dd>
+                        Não temos<br />
+                        loja física<br />
+                        ALFENAS - MG
+                      </dd>
+                      <dt>Whatsapp</dt>
+                      <dd><a
+                          href="https://api.whatsapp.com/send/?phone=5535997061628&text=Olá%21%20Gostaria+de+mais+informações+sobre+seus+produtos%21&type=custom_url&app_absent=0">(35)
+                          99706-1628</a>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+          <div class="col-12">
+            <div id="copyright">
+              <ul class="menu">
+                <li class="text-light">Desenvolvido por IFSULDEMINAS - Campus Machado <i class="fas fa-heart"></i></li>
+                <li>&copy; JESF TECHNOLOGY. All rights reserved</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery.dropotron.min.js"></script>
+  <script src="../assets/js/browser.min.js"></script>
+  <script src="../assets/js/breakpoints.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="models/Atendimento.js"></script>
+  <script src="models/No.js"> </script>
+  <script src="models/FilaEncadeada.js"> </script>
+  <script src="controllers/filaController.js"> </script>
+  <!--<script type="module" src="js/db/firebase/login.js"></script>-->
+
+</body>
+
+</html>
