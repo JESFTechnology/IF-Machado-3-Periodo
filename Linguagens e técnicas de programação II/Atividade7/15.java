@@ -6,5 +6,5 @@ public int posicaoElemento(T valor) {
         atual = atual.prox;
         pos++;
     }
-    return -1; // não encontrado
+    return -1;
 }
