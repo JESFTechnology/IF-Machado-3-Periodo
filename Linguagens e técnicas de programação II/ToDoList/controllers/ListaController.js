@@ -72,6 +72,7 @@ function leiaDadosTarefa() {
 */
 
 function removerTarefaPorIndice(index) {
+  alert("Tarefa removida");
   if (!minhaLista.isEmpty()) {
     let tarefaRemovida = null;
     if(index === 0){
@@ -134,9 +135,18 @@ function atualizarLista() {
    if(!minhaLista.isEmpty()){
       lblTarefas.innerHTML = "Lista de Tarefas";
       for(const tarefa of minhaLista){
+          const buttom = document.createElement("button");
+          const div = document.createElement("div");
+          buttom.innerHTML = "Remover";
+          buttom.className = "btn btn-danger";
+          buttom.onclick = function() {
+            removerTarefaPorIndice(minhaLista.getIndexOf(tarefa));
+          }
           const novaLinha = document.createElement("li");
           novaLinha.innerHTML = tarefa.toString();
-          listaTarefas.appendChild(novaLinha);
+          div.append(novaLinha);
+          div.append(buttom);
+          listaTarefas.appendChild(div);
       }
    }
    else{
