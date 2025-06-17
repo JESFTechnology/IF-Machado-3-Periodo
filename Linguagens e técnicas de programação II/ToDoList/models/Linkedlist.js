@@ -99,6 +99,18 @@ class LinkedList{
     isEmpty(){
         return this.#head === null;
     }
+    getIndexOf(dado){
+        let noAtual = this.#head;
+        let pos = 0;
+        while (noAtual !== null) {
+            if (noAtual.dado === dado) {
+                return pos;
+            }
+            noAtual = noAtual.proximo;
+            pos++;
+        }
+        return -1; // Dado não encontrado
+    }
 
     get length(){
         return this.#qtd;
